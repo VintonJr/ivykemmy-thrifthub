@@ -7,7 +7,7 @@ import { categoryLabel, conditionLabel, formatKes } from "@/lib/format";
 
 export default function ProductPage({ params }: PageProps<"/product/[id]">) {
   return (
-    <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-stone-200" />}>
+    <Suspense fallback={<div className="h-96 animate-pulse rounded-xl bg-blush/60" />}>
       <ProductDetail params={params} />
     </Suspense>
   );
@@ -24,21 +24,21 @@ async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
       <div className="space-y-3">
         {product.images.map((src, i) => (
           // eslint-disable-next-line @next/next/no-img-element -- admin uploads have unknown sizes
-          <img key={i} src={src} alt={`${product.title} photo ${i + 1}`} className="w-full rounded-xl bg-stone-200 object-cover" />
+          <img key={i} src={src} alt={`${product.title} photo ${i + 1}`} className="w-full rounded-xl bg-blush/60 object-cover" />
         ))}
       </div>
       <div className="space-y-5">
-        <Link href={`/shop?category=${product.category}`} className="text-sm text-muted hover:text-ivy">
+        <Link href={`/shop?category=${product.category}`} className="text-sm text-muted hover:text-brand">
           {categoryLabel(product.category)}
         </Link>
         <h1 className="text-2xl font-bold">{product.title}</h1>
-        <p className="text-2xl font-semibold text-ivy">{formatKes(product.priceKes)}</p>
+        <p className="text-2xl font-semibold text-brand">{formatKes(product.priceKes)}</p>
         {!available && (
           <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800">
             {product.status === "sold" ? "This piece has found a new home." : "Someone is checking out with this piece right now. Check back in 15 minutes."}
           </p>
         )}
-        <dl className="grid grid-cols-2 gap-3 rounded-xl border border-stone-200 bg-card p-4 text-sm">
+        <dl className="grid grid-cols-2 gap-3 rounded-xl border border-blush bg-card p-4 text-sm">
           {product.brand && (
             <div>
               <dt className="text-muted">Brand</dt>

@@ -60,7 +60,7 @@ export function useCart() {
 export function CartCount() {
   const { items } = useCart();
   if (!items.length) return null;
-  return <span className="ml-1 rounded-full bg-accent px-2 py-0.5 text-xs font-semibold text-white">{items.length}</span>;
+  return <span className="ml-1 rounded-full bg-brand px-2 py-0.5 text-xs font-semibold text-white">{items.length}</span>;
 }
 
 export function AddToCartButton({ item, disabled }: { item: CartItem; disabled?: boolean }) {
@@ -77,7 +77,7 @@ export function AddToCartButton({ item, disabled }: { item: CartItem; disabled?:
     <button
       onClick={() => add(item)}
       disabled={inCart}
-      className="w-full rounded-full bg-ivy px-6 py-3 font-semibold text-white transition hover:bg-ivy-dark disabled:bg-ivy/60"
+      className="w-full rounded-full bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-dark disabled:bg-brand/60"
     >
       {inCart ? "In your bag" : "Add to bag"}
     </button>

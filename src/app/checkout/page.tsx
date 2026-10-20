@@ -40,8 +40,8 @@ export default function CheckoutPage() {
         <fieldset className="space-y-2">
           <legend className="mb-2 font-semibold">Delivery</legend>
           {DELIVERY_ZONES.map((z) => (
-            <label key={z.id} className="flex cursor-pointer items-center gap-3 rounded-lg border border-stone-200 bg-card p-3 has-[:checked]:border-ivy">
-              <input type="radio" name="zone" value={z.id} checked={zoneId === z.id} onChange={() => setZoneId(z.id)} className="accent-ivy" />
+            <label key={z.id} className="flex cursor-pointer items-center gap-3 rounded-lg border border-blush bg-card p-3 has-[:checked]:border-brand">
+              <input type="radio" name="zone" value={z.id} checked={zoneId === z.id} onChange={() => setZoneId(z.id)} className="accent-brand" />
               <span className="flex-1">
                 <span className="block text-sm font-medium">{z.name}</span>
                 <span className="block text-xs text-muted">{z.eta}</span>
@@ -53,7 +53,7 @@ export default function CheckoutPage() {
         </fieldset>
       </div>
 
-      <aside className="h-fit space-y-4 rounded-xl border border-stone-200 bg-card p-5">
+      <aside className="h-fit space-y-4 rounded-xl border border-blush bg-card p-5">
         <h2 className="font-semibold">Order summary</h2>
         <ul className="space-y-1 text-sm">
           {items.map((i) => (
@@ -63,7 +63,7 @@ export default function CheckoutPage() {
             </li>
           ))}
         </ul>
-        <div className="space-y-1 border-t border-stone-200 pt-3 text-sm">
+        <div className="space-y-1 border-t border-blush pt-3 text-sm">
           <div className="flex justify-between">
             <span>Subtotal</span>
             <span>{formatKes(subtotal)}</span>

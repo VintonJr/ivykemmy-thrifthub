@@ -37,7 +37,7 @@ async function Results({ searchParams }: { searchParams: Search }) {
 
   return (
     <>
-      <form className="grid grid-cols-2 gap-3 rounded-xl border border-stone-200 bg-card p-4 sm:grid-cols-5">
+      <form className="grid grid-cols-2 gap-3 rounded-xl border border-blush bg-card p-4 sm:grid-cols-5">
         <input name="q" defaultValue={filter.q} placeholder="Search brand or item" className="input col-span-2 sm:col-span-1" />
         <select name="category" defaultValue={filter.category ?? ""} className="input">
           <option value="">All categories</option>
@@ -66,7 +66,7 @@ async function Results({ searchParams }: { searchParams: Search }) {
         <div className="col-span-2 flex gap-2 sm:col-span-1">
           <button className="btn flex-1 py-2">Filter</button>
           {hasFilter && (
-            <Link href="/shop" className="rounded-full px-3 py-2 text-sm text-muted hover:text-ivy">
+            <Link href="/shop" className="rounded-full px-3 py-2 text-sm text-muted hover:text-brand">
               Clear
             </Link>
           )}
