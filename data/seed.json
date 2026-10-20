@@ -1,0 +1,156 @@
+{
+  "products": [
+    {
+      "id": "p001",
+      "title": "Vintage denim jacket",
+      "description": "Classic mid-wash denim jacket, button front, two chest pockets.",
+      "category": "women",
+      "size": "M",
+      "condition": "excellent",
+      "priceKes": 2200,
+      "images": [
+        "/products/p001.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792497523780,
+      "brand": "Levi's"
+    },
+    {
+      "id": "p002",
+      "title": "Floral midi dress",
+      "description": "Flowy floral midi with short sleeves. Light fade at the hem.",
+      "category": "women",
+      "size": "S",
+      "condition": "good",
+      "priceKes": 1300,
+      "images": [
+        "/products/p002.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792493923780,
+      "brand": "Zara",
+      "flaws": "Small fade near hem"
+    },
+    {
+      "id": "p003",
+      "title": "Men's linen shirt",
+      "description": "Breathable beige linen shirt, perfect for Nairobi afternoons.",
+      "category": "men",
+      "size": "L",
+      "condition": "excellent",
+      "priceKes": 900,
+      "images": [
+        "/products/p003.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792490323780,
+      "brand": "H&M"
+    },
+    {
+      "id": "p004",
+      "title": "Slim chinos",
+      "description": "Olive slim-fit chinos, waist 32, leg 30.",
+      "category": "men",
+      "size": "32",
+      "condition": "good",
+      "priceKes": 1100,
+      "images": [
+        "/products/p004.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792486723780,
+      "brand": "Gap"
+    },
+    {
+      "id": "p005",
+      "title": "Nike Air Max 90",
+      "description": "White and grey Air Max 90. Clean soles, original laces.",
+      "category": "shoes",
+      "size": "UK 8",
+      "condition": "excellent",
+      "priceKes": 4500,
+      "images": [
+        "/products/p005.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792483123780,
+      "brand": "Nike"
+    },
+    {
+      "id": "p006",
+      "title": "Leather ankle boots",
+      "description": "Brown leather ankle boots with side zip.",
+      "category": "shoes",
+      "size": "UK 5",
+      "condition": "good",
+      "priceKes": 3200,
+      "images": [
+        "/products/p006.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792479523780,
+      "brand": "Clarks",
+      "flaws": "Light scuff on left toe"
+    },
+    {
+      "id": "p007",
+      "title": "Kids' hoodie",
+      "description": "Mustard pullover hoodie, still with tags.",
+      "category": "kids",
+      "size": "7-8 yrs",
+      "condition": "new-with-tags",
+      "priceKes": 700,
+      "images": [
+        "/products/p007.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792475923780,
+      "brand": "Next"
+    },
+    {
+      "id": "p008",
+      "title": "Leather tote bag",
+      "description": "Black pebbled leather tote with inner zip pocket.",
+      "category": "bags",
+      "size": "One size",
+      "condition": "excellent",
+      "priceKes": 3800,
+      "images": [
+        "/products/p008.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792472323780,
+      "brand": "Michael Kors"
+    },
+    {
+      "id": "p009",
+      "title": "Silk scarf",
+      "description": "Patterned silk-feel square scarf.",
+      "category": "accessories",
+      "size": "One size",
+      "condition": "excellent",
+      "priceKes": 500,
+      "images": [
+        "/products/p009.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792468723780
+    },
+    {
+      "id": "p010",
+      "title": "Oversized blazer",
+      "description": "Grey oversized single-breasted blazer.",
+      "category": "women",
+      "size": "L",
+      "condition": "excellent",
+      "priceKes": 2500,
+      "images": [
+        "/products/p010.svg"
+      ],
+      "status": "available",
+      "createdAt": 1792465123780,
+      "brand": "Mango"
+    }
+  ],
+  "orders": []
+}

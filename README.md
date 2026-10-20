@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IvyKemmy ThriftHub
 
-## Getting Started
+Online thrift shop for clothes, shoes and bags, built for Kenya first. Shoppers browse one-of-a-kind pieces, pay with M-Pesa or card through Paystack, and choose rider delivery, a pickup point or a courier. The shop owner adds listings from their phone and manages orders at `/admin`.
 
-First, run the development server:
+## Run it on your computer
+
+Needs [Node.js](https://nodejs.org) 20 or newer.
 
 ```bash
+npm install
+cp .env.example .env.local   # then set ADMIN_PASSWORD
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 for the shop and http://localhost:3000/admin to manage it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Without a Paystack key the shop runs in **demo mode**: checkout goes to a "Simulate successful payment" page and no money moves.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What's included
 
-## Learn More
+- Home page, shop with category, size, price and search filters, product pages with condition and flaws
+- Bag (saved on the shopper's phone) and checkout with delivery choices from `src/lib/delivery.ts`
+- Each piece is held for 15 minutes while someone pays, so it can't be sold twice; unpaid holds are released automatically
+- Paystack payment (M-Pesa and card), return-page verification and a signed webhook as backup
+- Order confirmation page with progress (paid, packed, on the way, delivered)
+- Admin: password sign-in, orders with status updates and sales totals, product list (hide, show, delete), new listing form with phone camera upload
+- Installable on phones (web app manifest)
 
-To learn more about Next.js, take a look at the following resources:
+## Turning on real payments
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Open a Paystack Kenya account and copy the secret key (`sk_test_...` for testing, `sk_live_...` when live) into `PAYSTACK_SECRET_KEY`.
+2. Set `NEXT_PUBLIC_SITE_URL` to the shop's public address.
+3. In the Paystack dashboard, set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Before going live
 
-## Deploy on Vercel
+Data is kept in `data/store.json` and photos in `data/uploads/` so the shop runs with zero setup. Hosts like Vercel can't write files, so before deploying replace `src/lib/db.ts` with a real database (Supabase/PostgreSQL recommended) and move photo storage (`src/lib/uploads.ts`) to Supabase Storage or Cloudinary. The rest of the app only talks to those two modules.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Path | What it is |
+| --- | --- |
+| `src/app` | Pages: home, shop, product, cart, checkout, order, admin |
+| `src/lib/db.ts` | Products and orders, including the 15-minute hold |
+| `src/lib/payments.ts` | Paystack integration |
+| `src/lib/delivery.ts` | Delivery options and prices (edit these) |
+| `data/seed.json` | Sample products loaded on first run |

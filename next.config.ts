@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // Room for several phone photos per listing.
+    serverActions: { bodySizeLimit: "25mb" },
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
