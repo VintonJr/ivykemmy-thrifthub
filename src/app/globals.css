@@ -1,12 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf7f2;
-  --foreground: #1f2421;
-  --muted: #6b6f6a;
-  --ivy: #2f5d3a;
-  --ivy-dark: #234529;
-  --accent: #c0653e;
+  /* IvyKemmy brand palette: rose pink lead, blush and petal tints, plum ink, sage and gold accents. */
+  --background: #fff6f8; /* petal */
+  --foreground: #3b1f2b; /* plum ink */
+  --muted: #7a5f6a;
+  --brand: #c2346e; /* rose */
+  --brand-dark: #9e2456; /* deep rose */
+  --blush: #f8d3df;
+  --accent: #4f6e57; /* sage */
+  --gold: #b8892e;
   --card: #ffffff;
 }
 
@@ -14,9 +17,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-ivy: var(--ivy);
-  --color-ivy-dark: var(--ivy-dark);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-blush: var(--blush);
   --color-accent: var(--accent);
+  --color-gold: var(--gold);
   --color-card: var(--card);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -29,9 +34,9 @@ body {
 }
 
 .input {
-  @apply w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-sm outline-none focus:border-ivy focus:ring-2 focus:ring-ivy/20;
+  @apply w-full rounded-lg border border-blush bg-white px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/20;
 }
 
 .btn {
-  @apply inline-flex items-center justify-center rounded-full bg-ivy px-6 py-3 font-semibold text-white transition hover:bg-ivy-dark disabled:opacity-60;
+  @apply inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-dark disabled:opacity-60;
 }

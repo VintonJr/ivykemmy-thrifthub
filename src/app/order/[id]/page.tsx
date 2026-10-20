@@ -15,7 +15,7 @@ const STEPS: { status: OrderStatus; label: string }[] = [
 
 export default function OrderPage({ params }: PageProps<"/order/[id]">) {
   return (
-    <Suspense fallback={<div className="mx-auto h-64 max-w-xl animate-pulse rounded-xl bg-stone-200" />}>
+    <Suspense fallback={<div className="mx-auto h-64 max-w-xl animate-pulse rounded-xl bg-blush/60" />}>
       <OrderDetail params={params} />
     </Suspense>
   );
@@ -41,7 +41,7 @@ async function OrderDetail({ params }: { params: Promise<{ id: string }> }) {
       {paid && (
         <ol className="grid grid-cols-4 gap-2 text-center text-xs">
           {STEPS.map((s, i) => (
-            <li key={s.status} className={`rounded-lg py-2 ${i <= stepIndex ? "bg-ivy text-white" : "bg-stone-200 text-muted"}`}>
+            <li key={s.status} className={`rounded-lg py-2 ${i <= stepIndex ? "bg-brand text-white" : "bg-blush/60 text-muted"}`}>
               {s.label}
             </li>
           ))}
@@ -53,15 +53,15 @@ async function OrderDetail({ params }: { params: Promise<{ id: string }> }) {
         </p>
       )}
       {order.status === "cancelled" && (
-        <p className="rounded-lg bg-stone-100 p-3 text-sm">
+        <p className="rounded-lg bg-blush/40 p-3 text-sm">
           Payment wasn&apos;t completed within 15 minutes, so the pieces went back on sale.{" "}
-          <Link href="/cart" className="font-medium text-ivy underline">
+          <Link href="/cart" className="font-medium text-brand underline">
             Try again
           </Link>
         </p>
       )}
 
-      <div className="space-y-2 rounded-xl border border-stone-200 bg-card p-5 text-sm">
+      <div className="space-y-2 rounded-xl border border-blush bg-card p-5 text-sm">
         {order.items.map((i) => (
           <div key={i.productId} className="flex justify-between">
             <span>{i.title}</span>
@@ -72,7 +72,7 @@ async function OrderDetail({ params }: { params: Promise<{ id: string }> }) {
           <span>Delivery: {order.delivery.zoneName}</span>
           <span>{formatKes(order.delivery.feeKes)}</span>
         </div>
-        <div className="flex justify-between border-t border-stone-200 pt-2 text-base font-semibold">
+        <div className="flex justify-between border-t border-blush pt-2 text-base font-semibold">
           <span>Total</span>
           <span>{formatKes(order.totalKes)}</span>
         </div>

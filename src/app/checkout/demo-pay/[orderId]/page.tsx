@@ -27,7 +27,7 @@ async function DemoPay({ params }: { params: Promise<{ orderId: string }> }) {
   }
 
   return (
-    <div className="mx-auto max-w-md space-y-5 rounded-2xl border border-stone-200 bg-card p-6 text-center">
+    <div className="mx-auto max-w-md space-y-5 rounded-2xl border border-blush bg-card p-6 text-center">
       <p className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">Demo mode: no real money moves</p>
       <h1 className="text-xl font-bold">Confirm M-Pesa payment</h1>
       <p className="text-muted">

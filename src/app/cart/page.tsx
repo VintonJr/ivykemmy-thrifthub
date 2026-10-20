@@ -25,13 +25,13 @@ export default function CartPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <h1 className="text-2xl font-bold">Your bag</h1>
-      <ul className="divide-y divide-stone-200 rounded-xl border border-stone-200 bg-card">
+      <ul className="divide-y divide-blush rounded-xl border border-blush bg-card">
         {items.map((item) => (
           <li key={item.id} className="flex items-center gap-4 p-4">
             {/* eslint-disable-next-line @next/next/no-img-element -- admin uploads have unknown sizes */}
-            <img src={item.image} alt="" className="h-20 w-16 rounded-lg bg-stone-200 object-cover" />
+            <img src={item.image} alt="" className="h-20 w-16 rounded-lg bg-blush/60 object-cover" />
             <div className="flex-1">
-              <Link href={`/product/${item.id}`} className="font-medium hover:text-ivy">
+              <Link href={`/product/${item.id}`} className="font-medium hover:text-brand">
                 {item.title}
               </Link>
               <p className="text-sm text-muted">Size {item.size}</p>

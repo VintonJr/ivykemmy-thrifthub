@@ -30,7 +30,7 @@ async function Orders() {
           ["Sales (excl. delivery)", formatKes(revenue)],
           ["Waiting to pack", toPack.toString()],
         ].map(([label, value]) => (
-          <div key={label} className="rounded-xl border border-stone-200 bg-card p-4">
+          <div key={label} className="rounded-xl border border-blush bg-card p-4">
             <p className="text-xs text-muted">{label}</p>
             <p className="text-xl font-semibold">{value}</p>
           </div>
@@ -40,7 +40,7 @@ async function Orders() {
       {!orders.length && <p className="text-muted">No orders yet.</p>}
       <div className="space-y-3">
         {orders.map((o) => (
-          <div key={o.id} className="rounded-xl border border-stone-200 bg-card p-4 text-sm">
+          <div key={o.id} className="rounded-xl border border-blush bg-card p-4 text-sm">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
                 <p className="font-semibold">
@@ -58,7 +58,7 @@ async function Orders() {
                     </option>
                   ))}
                 </select>
-                <button className="rounded-full bg-ivy px-4 text-white">Save</button>
+                <button className="rounded-full bg-brand px-4 text-white">Save</button>
               </form>
             </div>
             <p className="mt-2">{o.items.map((i) => i.title).join(", ")}</p>

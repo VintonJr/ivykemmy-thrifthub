@@ -5,7 +5,7 @@ import { conditionLabel, formatKes } from "@/lib/format";
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/product/${product.id}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-stone-200">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-blush/60">
         {/* eslint-disable-next-line @next/next/no-img-element -- admin uploads have unknown sizes */}
         <img src={product.images[0]} alt={product.title} className="h-full w-full object-cover transition group-hover:scale-105" />
         {product.status !== "available" && (
@@ -30,9 +30,9 @@ export function ProductGridSkeleton({ count = 8 }: { count?: number }) {
     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {Array.from({ length: count }, (_, i) => (
         <div key={i} className="animate-pulse">
-          <div className="aspect-[4/5] rounded-xl bg-stone-200" />
-          <div className="mt-2 h-4 w-3/4 rounded bg-stone-200" />
-          <div className="mt-1 h-4 w-1/3 rounded bg-stone-200" />
+          <div className="aspect-[4/5] rounded-xl bg-blush/60" />
+          <div className="mt-2 h-4 w-3/4 rounded bg-blush/60" />
+          <div className="mt-1 h-4 w-1/3 rounded bg-blush/60" />
         </div>
       ))}
     </div>

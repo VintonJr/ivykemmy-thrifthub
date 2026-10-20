@@ -27,13 +27,13 @@ async function Products() {
           + New listing
         </Link>
       </div>
-      <ul className="divide-y divide-stone-200 rounded-xl border border-stone-200 bg-card">
+      <ul className="divide-y divide-blush rounded-xl border border-blush bg-card">
         {products.map((p) => (
           <li key={p.id} className="flex items-center gap-3 p-3 text-sm">
             {/* eslint-disable-next-line @next/next/no-img-element -- admin uploads have unknown sizes */}
-            <img src={p.images[0]} alt="" className="h-14 w-11 rounded bg-stone-200 object-cover" />
+            <img src={p.images[0]} alt="" className="h-14 w-11 rounded bg-blush/60 object-cover" />
             <div className="flex-1">
-              <Link href={`/product/${p.id}`} className="font-medium hover:text-ivy">
+              <Link href={`/product/${p.id}`} className="font-medium hover:text-brand">
                 {p.title}
               </Link>
               <p className="text-muted">
@@ -42,7 +42,7 @@ async function Products() {
             </div>
             {(p.status === "available" || p.status === "hidden") && (
               <form action={setProductVisibility.bind(null, p.id, p.status === "hidden")}>
-                <button className="text-ivy hover:underline">{p.status === "hidden" ? "Show" : "Hide"}</button>
+                <button className="text-brand hover:underline">{p.status === "hidden" ? "Show" : "Hide"}</button>
               </form>
             )}
             <form action={removeProduct.bind(null, p.id)}>
