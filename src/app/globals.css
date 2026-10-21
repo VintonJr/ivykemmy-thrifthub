@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* IvyKemmy brand palette: rose pink lead, blush and petal tints, plum ink, sage and gold accents. */
-  --background: #fff6f8; /* petal */
-  --foreground: #3b1f2b; /* plum ink */
-  --muted: #7a5f6a;
-  --brand: #c2346e; /* rose */
-  --brand-dark: #9e2456; /* deep rose */
-  --blush: #f8d3df;
-  --accent: #4f6e57; /* sage */
-  --gold: #b8892e;
+  /* IvyKemmy brand palette, taken from the logo: plum lettering, lilac badge, gold crown and hanger. */
+  --background: #faf4fb; /* soft lilac */
+  --foreground: #2e1030; /* plum ink */
+  --muted: #6e5a72;
+  --brand: #6b1f6e; /* plum */
+  --brand-dark: #4a0b4c; /* deep plum */
+  --blush: #e8d0ea; /* lilac */
+  --accent: #843473; /* orchid, from the leaves */
+  --gold: #c9973a; /* crown gold */
   --card: #ffffff;
 }
 
