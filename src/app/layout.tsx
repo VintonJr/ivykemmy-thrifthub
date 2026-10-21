@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { CartCount, CartProvider } from "@/components/cart";
+import { SHOP_PHONE_DISPLAY, SHOP_PHONE_TEL, WHATSAPP_NUMBER } from "@/lib/contact";
 import { CATEGORIES } from "@/lib/types";
 import "./globals.css";
 
@@ -22,10 +24,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#c2346e",
+  themeColor: "#6b1f6e",
 };
-
-const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -34,8 +34,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CartProvider>
           <header className="sticky top-0 z-10 border-b border-blush bg-background/95 backdrop-blur">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-              <Link href="/" className="text-lg font-bold tracking-tight text-brand">
-                IvyKemmy <span className="font-normal text-foreground">ThriftHub</span>
+              <Link href="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-brand">
+                <Image src="/logo-128.png" alt="" width={44} height={44} priority />
+                <span>
+                  IvyKemmy <span className="font-normal text-foreground">ThriftHub</span>
+                </span>
               </Link>
               <nav className="flex items-center gap-5 text-sm font-medium">
                 <Link href="/shop" className="hover:text-brand">
@@ -57,13 +60,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </header>
           <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">{children}</main>
           <footer className="border-t border-blush py-8 text-center text-sm text-muted">
+            <Image src="/logo-128.png" alt="IvyKemmy ThriftHub logo" width={64} height={64} className="mx-auto mb-2" />
             <p className="font-semibold text-foreground">IvyKemmy ThriftHub</p>
-            <p>Pre-loved fashion, delivered across Kenya. Pay with M-Pesa or card.</p>
-            {WHATSAPP && (
-              <a href={`https://wa.me/${WHATSAPP}`} className="mt-2 inline-block font-medium text-brand hover:underline">
-                Chat with us on WhatsApp
+            <p className="italic text-accent">Quality Finds, Great Vibes</p>
+            <p className="mt-1">Pre-loved fashion, delivered across Kenya. Pay with M-Pesa or card.</p>
+            <p className="mt-2 flex justify-center gap-4 font-medium">
+              <a href={`tel:${SHOP_PHONE_TEL}`} className="text-brand hover:underline">
+                Call {SHOP_PHONE_DISPLAY}
               </a>
-            )}
+              <a href={`https://wa.me/${WHATSAPP_NUMBER}`} className="text-brand hover:underline">
+                WhatsApp us
+              </a>
+            </p>
           </footer>
         </CartProvider>
       </body>

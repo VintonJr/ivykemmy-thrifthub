@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { connection } from "next/server";
 import { ProductCard, ProductGridSkeleton } from "@/components/product-card";
@@ -9,12 +10,13 @@ export default function Home() {
   return (
     <div className="space-y-10">
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand to-brand-dark px-6 py-12 text-white sm:px-10">
-        <div aria-hidden className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-blush/25" />
-        <div aria-hidden className="absolute -bottom-20 right-24 h-40 w-40 rounded-full border-[6px] border-gold/70" />
-        <p className="relative text-sm uppercase tracking-widest text-blush">Pre-loved. Hand-picked. One of a kind.</p>
+        <div aria-hidden className="absolute -right-16 -top-16 h-56 w-56 rounded-full border-[6px] border-gold/60" />
+        <Image src="/icon-512.png" alt="" width={220} height={220} priority className="absolute right-12 top-1/2 hidden -translate-y-1/2 drop-shadow-xl md:block" />
+        <div aria-hidden className="absolute -bottom-20 right-24 h-40 w-40 rounded-full bg-blush/15" />
+        <p className="relative text-sm uppercase tracking-widest text-gold">Quality finds, great vibes</p>
         <h1 className="relative mt-2 max-w-xl text-3xl font-bold sm:text-4xl">Quality thrift fashion, delivered across Kenya</h1>
         <p className="relative mt-3 max-w-lg text-white/85">Clothes, shoes and bags at thrift prices. Pay with M-Pesa, get it delivered or pick up near you.</p>
-        <Link href="/shop" className="relative mt-6 inline-block rounded-full bg-white px-6 py-3 font-semibold text-brand-dark hover:bg-blush">
+        <Link href="/shop" className="relative mt-6 inline-block rounded-full bg-gold px-6 py-3 font-semibold text-brand-dark hover:bg-white">
           Shop new drops
         </Link>
       </section>
