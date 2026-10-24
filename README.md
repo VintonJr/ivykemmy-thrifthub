@@ -28,9 +28,9 @@ Without a Paystack key the shop runs in **demo mode**: checkout goes to a "Simul
 
 ## Turning on real payments
 
-1. Open a Paystack Kenya account and copy the secret key (`sk_test_...` for testing, `sk_live_...` when live) into `PAYSTACK_SECRET_KEY`.
-2. Set `NEXT_PUBLIC_SITE_URL` to the shop's public address.
-3. In the Paystack dashboard, set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
+1. Open a Paystack Kenya account and put the secret key in `PAYSTACK_SECRET_KEY`: `sk_test_...` while testing (Paystack shows a test M-Pesa/card page and no money moves), `sk_live_...` once Paystack has approved the business.
+2. On Vercel the return link uses the shop's Vercel address automatically. Set `NEXT_PUBLIC_SITE_URL` only if you add your own domain.
+3. In the Paystack dashboard (Settings, API Keys & Webhooks), set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
 
 ## Database and photos
 

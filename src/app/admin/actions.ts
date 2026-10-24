@@ -8,7 +8,7 @@ import { createProduct, deleteProduct, setOrderStatus, updateProduct } from "@/l
 import { CATEGORIES, CONDITIONS, ORDER_STATUSES, type Category, type Condition, type OrderStatus } from "@/lib/types";
 
 export async function login(_prev: { error?: string }, formData: FormData): Promise<{ error?: string }> {
-  if (!process.env.ADMIN_PASSWORD) return { error: "Set ADMIN_PASSWORD in .env.local first." };
+  if (!process.env.ADMIN_PASSWORD) return { error: "Set ADMIN_PASSWORD first (in .env.local, or in Vercel's environment variables)." };
   if (!checkPassword(String(formData.get("password") ?? ""))) return { error: "Wrong password." };
   await setAdminSession();
   redirect("/admin");

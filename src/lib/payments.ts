@@ -11,8 +11,11 @@ export function paymentsEnabled(): boolean {
   return Boolean(process.env.PAYSTACK_SECRET_KEY);
 }
 
+// On Vercel the shop's main address is known, so NEXT_PUBLIC_SITE_URL is only needed for a custom domain.
 function siteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  return "http://localhost:3000";
 }
 
 async function paystack<T>(path: string, init?: RequestInit): Promise<T> {
