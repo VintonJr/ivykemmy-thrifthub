@@ -32,16 +32,24 @@ Without a Paystack key the shop runs in **demo mode**: checkout goes to a "Simul
 2. Set `NEXT_PUBLIC_SITE_URL` to the shop's public address.
 3. In the Paystack dashboard, set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
 
-## Before going live
+## Database and photos
 
-Data is kept in `data/store.json` and photos in `data/uploads/` so the shop runs with zero setup. Hosts like Vercel can't write files, so before deploying replace `src/lib/db.ts` with a real database (Supabase/PostgreSQL recommended) and move photo storage (`src/lib/uploads.ts`) to Supabase Storage or Cloudinary. The rest of the app only talks to those two modules.
+Locally, with nothing set, data is kept in `data/store.json` and photos in `data/uploads/` so the shop runs with zero setup.
+
+On the live shop they live in Supabase:
+
+- `POSTGRES_URL` (or `DATABASE_URL`): products and orders. The tables are created automatically on first use, in a private `shop` schema with row level security on, so Supabase's public API can't read customer details.
+- `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`: listing photos, stored in a public `product-photos` bucket that is also created automatically.
+
+Connecting Supabase from the Vercel project's Storage tab fills in all three. The live database starts empty; the sample products in `data/seed.json` are only used locally.
 
 ## Project layout
 
 | Path | What it is |
 | --- | --- |
 | `src/app` | Pages: home, shop, product, cart, checkout, order, admin |
-| `src/lib/db.ts` | Products and orders, including the 15-minute hold |
+| `src/lib/db.ts` | Products and orders, including the 15-minute hold (`src/lib/store/` has the Postgres and local file versions) |
+| `src/lib/uploads.ts` | Listing photos (Supabase Storage or local files) |
 | `src/lib/payments.ts` | Paystack integration |
 | `src/lib/delivery.ts` | Delivery options and prices (edit these) |
 | `data/seed.json` | Sample products loaded on first run |
