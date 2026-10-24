@@ -5,7 +5,9 @@ import * as postgresStore from "./store/postgres";
 // Products and orders. With POSTGRES_URL (or DATABASE_URL) set, they live in Supabase/PostgreSQL;
 // without it, in data/store.json so the shop runs locally with no setup.
 
-const store = postgresStore.databaseUrl() ? postgresStore : fileStore;
+export const databaseConnected = Boolean(postgresStore.databaseUrl());
+
+const store = databaseConnected ? postgresStore : fileStore;
 
 export { HOLD_MINUTES, UnavailableError, type ProductFilter } from "./store/common";
 

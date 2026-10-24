@@ -1,7 +1,9 @@
 import { Suspense } from "react";
 import { requireAdmin } from "@/lib/admin-auth";
-import { listOrders } from "@/lib/db";
+import { databaseConnected, listOrders } from "@/lib/db";
 import { formatKes } from "@/lib/format";
+import { paymentMode } from "@/lib/payments";
+import { photoStorageConnected } from "@/lib/uploads";
 import { ORDER_STATUSES } from "@/lib/types";
 import { changeOrderStatus } from "./actions";
 import { AdminNav } from "./admin-nav";
@@ -24,6 +26,7 @@ async function Orders() {
   return (
     <div>
       <AdminNav />
+      <SetupStatus />
       <div className="mb-6 grid grid-cols-3 gap-3">
         {[
           ["Paid orders", paid.length.toString()],
@@ -68,6 +71,27 @@ async function Orders() {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+const PAYMENT_LABELS = { demo: "Demo (no Paystack key)", test: "Paystack test mode", live: "Live" };
+
+// Shows at a glance whether the live shop's services are connected.
+function SetupStatus() {
+  const mode = paymentMode();
+  const items: [string, string, boolean][] = [
+    ["Database", databaseConnected ? "Supabase" : "Local file", databaseConnected],
+    ["Photos", photoStorageConnected() ? "Supabase" : "Local folder", photoStorageConnected()],
+    ["Payments", PAYMENT_LABELS[mode], mode === "live"],
+  ];
+  return (
+    <div className="mb-4 flex flex-wrap gap-2 text-xs">
+      {items.map(([label, value, ok]) => (
+        <span key={label} className={`rounded-full px-3 py-1 ${ok ? "bg-blush text-brand-dark" : "bg-amber-100 text-amber-800"}`}>
+          {label}: {value}
+        </span>
+      ))}
     </div>
   );
 }

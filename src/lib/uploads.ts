@@ -22,6 +22,10 @@ function supabase() {
   return url && key ? { url: url.replace(/\/$/, ""), key } : undefined;
 }
 
+export function photoStorageConnected(): boolean {
+  return Boolean(supabase());
+}
+
 async function storage(path: string, init: RequestInit): Promise<Response> {
   const { url, key } = supabase()!;
   return fetch(`${url}/storage/v1/${path}`, {
