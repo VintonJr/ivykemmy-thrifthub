@@ -1,16 +1,14 @@
 "use server";
 
-import { promises as fs } from "fs";
-import { randomUUID } from "crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { checkPassword, clearAdminSession, requireAdmin, setAdminSession } from "@/lib/admin-auth";
-import { uploadPath, UPLOADS_DIR } from "@/lib/uploads";
+import { saveImages } from "@/lib/uploads";
 import { createProduct, deleteProduct, setOrderStatus, updateProduct } from "@/lib/db";
 import { CATEGORIES, CONDITIONS, ORDER_STATUSES, type Category, type Condition, type OrderStatus } from "@/lib/types";
 
 export async function login(_prev: { error?: string }, formData: FormData): Promise<{ error?: string }> {
-  if (!process.env.ADMIN_PASSWORD) return { error: "Set ADMIN_PASSWORD in .env.local first." };
+  if (!process.env.ADMIN_PASSWORD) return { error: "Set ADMIN_PASSWORD first (in .env.local, or in Vercel's environment variables)." };
   if (!checkPassword(String(formData.get("password") ?? ""))) return { error: "Wrong password." };
   await setAdminSession();
   redirect("/admin");
@@ -19,22 +17,6 @@ export async function login(_prev: { error?: string }, formData: FormData): Prom
 export async function logout() {
   await clearAdminSession();
   redirect("/admin/login");
-}
-
-const IMAGE_TYPES: Record<string, string> = { "image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp" };
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-
-async function saveImages(files: File[]): Promise<string[]> {
-  await fs.mkdir(UPLOADS_DIR, { recursive: true });
-  const urls: string[] = [];
-  for (const file of files) {
-    const ext = IMAGE_TYPES[file.type];
-    if (!ext || file.size > MAX_IMAGE_BYTES) continue;
-    const name = `${randomUUID()}${ext}`;
-    await fs.writeFile(uploadPath(name), Buffer.from(await file.arrayBuffer()));
-    urls.push(`/uploads/${name}`);
-  }
-  return urls;
 }
 
 export async function addProduct(_prev: { error?: string }, formData: FormData): Promise<{ error?: string }> {

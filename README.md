@@ -28,20 +28,28 @@ Without a Paystack key the shop runs in **demo mode**: checkout goes to a "Simul
 
 ## Turning on real payments
 
-1. Open a Paystack Kenya account and copy the secret key (`sk_test_...` for testing, `sk_live_...` when live) into `PAYSTACK_SECRET_KEY`.
-2. Set `NEXT_PUBLIC_SITE_URL` to the shop's public address.
-3. In the Paystack dashboard, set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
+1. Open a Paystack Kenya account and put the secret key in `PAYSTACK_SECRET_KEY`: `sk_test_...` while testing (Paystack shows a test M-Pesa/card page and no money moves), `sk_live_...` once Paystack has approved the business.
+2. On Vercel the return link uses the shop's Vercel address automatically. Set `NEXT_PUBLIC_SITE_URL` only if you add your own domain.
+3. In the Paystack dashboard (Settings, API Keys & Webhooks), set the webhook URL to `https://<your-domain>/api/paystack/webhook`.
 
-## Before going live
+## Database and photos
 
-Data is kept in `data/store.json` and photos in `data/uploads/` so the shop runs with zero setup. Hosts like Vercel can't write files, so before deploying replace `src/lib/db.ts` with a real database (Supabase/PostgreSQL recommended) and move photo storage (`src/lib/uploads.ts`) to Supabase Storage or Cloudinary. The rest of the app only talks to those two modules.
+Locally, with nothing set, data is kept in `data/store.json` and photos in `data/uploads/` so the shop runs with zero setup.
+
+On the live shop they live in Supabase:
+
+- `POSTGRES_URL` (or `DATABASE_URL`): products and orders. The tables are created automatically on first use, in a private `shop` schema with row level security on, so Supabase's public API can't read customer details.
+- `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`: listing photos, stored in a public `product-photos` bucket that is also created automatically.
+
+Connecting Supabase from the Vercel project's Storage tab fills in all three. The live database starts empty; the sample products in `data/seed.json` are only used locally.
 
 ## Project layout
 
 | Path | What it is |
 | --- | --- |
 | `src/app` | Pages: home, shop, product, cart, checkout, order, admin |
-| `src/lib/db.ts` | Products and orders, including the 15-minute hold |
+| `src/lib/db.ts` | Products and orders, including the 15-minute hold (`src/lib/store/` has the Postgres and local file versions) |
+| `src/lib/uploads.ts` | Listing photos (Supabase Storage or local files) |
 | `src/lib/payments.ts` | Paystack integration |
 | `src/lib/delivery.ts` | Delivery options and prices (edit these) |
 | `data/seed.json` | Sample products loaded on first run |
