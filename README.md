@@ -25,6 +25,7 @@ Without a Paystack key the shop runs in **demo mode**: checkout goes to a "Simul
 - Order confirmation page with progress (paid, packed, on the way, delivered)
 - Admin: password sign-in, orders with status updates and sales totals, product list (hide, show, delete), new listing form with phone camera upload
 - Installable on phones (web app manifest)
+- Android and iOS app in `mobile/`, a native shell around the live shop (see [mobile/README.md](mobile/README.md))
 
 ## Turning on real payments
 
@@ -53,3 +54,4 @@ Connecting Supabase from the Vercel project's Storage tab fills in all three. Th
 | `src/lib/payments.ts` | Paystack integration |
 | `src/lib/delivery.ts` | Delivery options and prices (edit these) |
 | `data/seed.json` | Sample products loaded on first run |
+| `mobile/` | Android and iOS app (Capacitor) |

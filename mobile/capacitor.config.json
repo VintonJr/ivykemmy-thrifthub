@@ -1,0 +1,32 @@
+{
+  "appId": "com.ivykemmy.thrifthub",
+  "appName": "IvyKemmy ThriftHub",
+  "webDir": "www",
+  "backgroundColor": "#FAF4FB",
+  "appendUserAgent": "IvyKemmyApp",
+  "server": {
+    "url": "https://ivykemmy-thrifthub.vercel.app",
+    "errorPath": "offline.html",
+    "allowNavigation": [
+      "ivykemmy-thrifthub.vercel.app",
+      "*.paystack.com",
+      "*.paystack.co"
+    ]
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#FAF4FB",
+      "showSpinner": false,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "SystemBars": {
+      "insetsHandling": "native",
+      "style": "LIGHT"
+    }
+  }
+}
