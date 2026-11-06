@@ -33,8 +33,7 @@ jobs:
           java-version: 21
           cache: gradle
 
-      - uses: android-actions/setup-android@v3
-
+      # GitHub's Ubuntu runners come with the Android SDK; Gradle fetches any missing parts.
       - run: npm ci
       - run: npx cap sync android
 
