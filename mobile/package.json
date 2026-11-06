@@ -1,0 +1,23 @@
+{
+  "name": "ivykemmy-thrifthub-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Android and iOS app for IvyKemmy ThriftHub. A native shell around the live shop.",
+  "scripts": {
+    "sync": "cap sync",
+    "icons": "capacitor-assets generate --iconBackgroundColor '#FAF4FB' --iconBackgroundColorDark '#4A0B4C' --splashBackgroundColor '#FAF4FB' --splashBackgroundColorDark '#4A0B4C'",
+    "android": "cap open android",
+    "ios": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.6.0",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.6.0",
+    "@capacitor/ios": "8.6.0",
+    "@capacitor/splash-screen": "8.0.2"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "4.0.0",
+    "@capacitor/cli": "8.6.0"
+  }
+}

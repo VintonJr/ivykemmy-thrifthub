@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- IvyKemmy brand colours, from the logo. -->
+    <color name="colorPrimary">#6B1F6E</color>
+    <color name="colorPrimaryDark">#4A0B4C</color>
+    <color name="colorAccent">#C9973A</color>
+    <color name="shopBackground">#FAF4FB</color>
+</resources>

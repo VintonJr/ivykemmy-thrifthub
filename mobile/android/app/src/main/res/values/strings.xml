@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">IvyKemmy ThriftHub</string>
+    <string name="title_activity_main">IvyKemmy ThriftHub</string>
+    <string name="package_name">com.ivykemmy.thrifthub</string>
+    <string name="custom_url_scheme">com.ivykemmy.thrifthub</string>
+</resources>
